@@ -35,6 +35,8 @@ namespace geo {
     vector operator/(const vector& lhs, double rhs);
     vector operator*(double lhs, const vector& rhs);
     vector operator/(double lhs, const vector& rhs);
+    vector operator*(const vector& lhs, const vector& rhs);
+    vector operator/(const vector& lhs, const vector& rhs);
 
     bool operator==(const vector& lhs, const vector& rhs);
     bool operator!=(const vector& lhs, const vector& rhs);

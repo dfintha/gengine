@@ -79,7 +79,7 @@ namespace obj {
 		void draw(const eng::scene& scene) const;
 
 		virtual void create() = 0;
-		virtual vertex_data vertex_at(float u, float v) const = 0;
+		virtual vertex_data vertex_at(float u, float v) const;
 	};
 
 
@@ -89,5 +89,14 @@ namespace obj {
 	    vertex_data vertex_at(float u, float v) const override;
 	};
 
+	class rectangle : public object_base {
+	public:
+	    void create() override;
+	};
+
+	class cylinder : public object_base {
+	public:
+	    void create() override;
+	};
 }
 #endif

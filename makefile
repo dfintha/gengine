@@ -6,6 +6,8 @@ OBJECTS=obj/program.o 				\
 		obj/engine/texture.o		\
 		obj/geometry/vector.o 		\
 		obj/geometry/matrix.o 		\
+		obj/objects/cylinder.o 	\
+		obj/objects/rectangle.o 	\
 		obj/objects/sphere.o 		\
 		obj/objects/objects.o
 

@@ -73,4 +73,8 @@ namespace obj {
 	    glDrawArrays(GL_TRIANGLES, 0, vertices);
 	    glBindVertexArray(0);
 	}
+
+	vertex_data object_base::vertex_at(float, float) const {
+		return vertex_data();
+	}
 }

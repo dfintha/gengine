@@ -29,6 +29,15 @@ void e_init() {
     scene.light_position = geo::vector(0, 20, -10, 1);
     scene.background_color = geo::vector(0.1, 0.1, 0.1, 1);
 
+    auto checker = tex::checkerboard<16>(geo::vector(0.2, 0.2, 0.8, 1),
+                                         geo::vector(0.1, 0.1, 0.2, 1));
+
+    auto hstripe = tex::hstripes<32>(geo::vector(0.2, 0.8, 0.2, 1),
+                                     geo::vector(0.1, 0.3, 0.1, 1));
+
+    auto vstripe = tex::vstripes<32>(geo::vector(0.8, 0.2, 0.2, 1),
+                                     geo::vector(0.3, 0.1, 0.1, 1));
+
     auto current = std::shared_ptr<obj::object_base>(new obj::sphere);
     current->position = geo::vector(0, 1, -3);
     current->scale = geo::vector(25, 25, 25);
@@ -52,8 +61,30 @@ void e_init() {
     current->create();
     scene.objects.push_back(current);
 
-    auto checker = tex::checkerboard<16>(geo::vector(0.2, 0.2, 0.8, 1),
-                                         geo::vector(0.1, 0.1, 0.2, 1));
+    current = std::shared_ptr<obj::object_base>(new obj::cylinder);
+    current->position = geo::vector(-9, 0, 4);
+    current->scale = geo::vector(1, 10, 1, 1);
+    current->ambient = geo::vector(1, 1, 1, 1);
+    current->diffuse = geo::vector(0.2, 0.6, 0.8, 1);
+    current->specular = geo::vector();
+    current->shine = 15;
+    current->draw_mode = obj::polyfill;
+    current->textured = true;
+    current->texture = hstripe;
+    current->create();
+    scene.objects.push_back(current);
+
+    current = std::shared_ptr<obj::object_base>(new obj::rectangle);
+    current->position = geo::vector(0, 0, 0, 1);
+    current->scale = geo::vector(100, 10, 100);
+    current->ambient = geo::vector(0.3, 0.3, 0.3, 1);
+    current->diffuse = geo::vector(0.2, 0.2, 1, 1);
+    current->specular = geo::vector(0.2, 0.2, 0.2, 1);
+    current->shine = 40;
+    current->textured = true;
+    current->texture = vstripe;
+    current->create();
+    scene.objects.push_back(current);
 
     constexpr const int amount = 8;
     for (int i = 0; i <= amount - 1; ++i) {

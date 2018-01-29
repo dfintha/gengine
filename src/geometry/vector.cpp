@@ -28,6 +28,14 @@ namespace geo {
         return rhs / lhs;
     }
 
+    vector operator*(const vector& lhs, const vector& rhs) {
+        return geo::vector(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+    }
+
+    vector operator/(const vector& lhs, const vector& rhs) {
+        return geo::vector(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+    }
+
     bool operator==(const vector& lhs, const vector& rhs) {
         return lhs.x == rhs.x &&
                lhs.y == rhs.y &&

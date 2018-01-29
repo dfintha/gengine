@@ -5,11 +5,19 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 eng::scene scene;
 
+constexpr const char title[] = "GEngine";
+constexpr const char description[] = 
+    "Click inside the window to toggle mouse grab. If the mouse is grabbed,\n"
+    "you can use it to look around freely. Move forward using the W key, and\n"
+    "backwards using the S key. You can toggle full screen mode using the F\n"
+    "key.";
+
 void e_init() { 
-	glutSetWindowTitle("GEngine");
+	glutSetWindowTitle(title);
 	glViewport(0, 0, scene.width, scene.height);
     srand(unsigned(time(nullptr)));
 
@@ -79,6 +87,9 @@ void e_init() {
 
     scene.program.make();
     scene.program.use();
+
+    constexpr const char nl = '\n';
+    std::cout << title << nl << nl << description << std::endl;
 }
 
 void e_display() {

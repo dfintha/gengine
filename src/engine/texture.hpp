@@ -39,21 +39,21 @@ namespace eng {
 	};
 
 	using texture_ptr = std::shared_ptr<texture_base>;
+}
 
+namespace tex {
 	template <unsigned S>
-	texture_ptr checkerboard(const geo::vector& c1, const geo::vector& c2) {
-		auto result = new texture<S>;
+	eng::texture_ptr checkerboard(const geo::vector& c1, const geo::vector& c2) {
+		auto result = new eng::texture<S>;
 		for (unsigned x = 0; x < S; ++x) {
 			for (unsigned y = 0; y < S; ++y) {
 				result->image[x][y] = (x % 2 == y % 2) ? c1 : c2;
 			}
 		}
 		result->make();
-		return texture_ptr(result);
+		return eng::texture_ptr(result);
 	}
-}
-
-namespace tex {
+	
 	template <unsigned S>
 	eng::texture_ptr hstripes(const geo::vector& c1, const geo::vector& c2) {
 		auto result = new eng::texture<S>;

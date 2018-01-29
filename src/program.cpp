@@ -44,8 +44,8 @@ void e_init() {
     current->create();
     scene.objects.push_back(current);
 
-    auto checker = tex::randomized<64>(geo::vector(0.1, 0.1, 0.2, 1),
-                                       geo::vector(0, 0, 0, 1));
+    auto checker = tex::checkerboard<16>(geo::vector(0.2, 0.2, 0.8, 1),
+                                         geo::vector(0.1, 0.1, 0.2, 1));
 
     constexpr const int amount = 8;
     for (int i = 0; i <= amount - 1; ++i) {

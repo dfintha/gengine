@@ -13,7 +13,8 @@ OBJECTS=obj/program.o 				\
 
 CXX=clang++
 CXXFLAGS=-std=c++14 -O2 -Wall -Wextra -Werror -pedantic -ffast-math -I./src
-CLIBS=-lGL -lGLU -lglut -lGLEW -lpthread
+CXXFLAGS+=`pkg-config --cflags gl glew freeglut`
+LDFLAGS=`pkg-config --libs gl glew freeglut`
 
 BLD=`tput bold`
 RED=`tput setaf 1`
@@ -39,7 +40,7 @@ loc:
 $(BINARY): $(OBJECTS)
 	@mkdir -p bin
 	@printf "%s[Linking]%s $@\n" "$(BLD)$(TEL)" $(NRM)
-	@$(CXX) $(OBJECTS) -o $(BINARY) $(CLIBS)
+	@$(CXX) $(OBJECTS) -o $(BINARY) $(LDFLAGS)
 	@printf "%s[ Strip ]%s $@\n" "$(BLD)$(TEL)" $(NRM)
 	@strip $(BINARY)
 	@printf "%s[Success] Build Succeeded!%s\n" "$(BLD)$(GRN)" $(NRM)

@@ -32,7 +32,7 @@ namespace eng {
 	    }
 
 	    finalized = true;
-	    glShaderSource(handle, 1, &buffer, nullptr);
+	    glShaderSource(handle, 1, const_cast<const char **>(&buffer), nullptr);
 	    glCompileShader(handle);
 	    delete[] buffer;
 

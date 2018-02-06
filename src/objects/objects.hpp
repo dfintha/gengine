@@ -4,6 +4,7 @@
 #include "engine/scene.hpp"
 #include "engine/texture.hpp"
 #include "geometry/vector.hpp"
+#include <string>
 
 namespace obj {
 	struct vertex_data {

@@ -11,6 +11,12 @@ Be advised: using parts of this code to solve Computer Graphics homeworks
 may result in accusations of plagiarism. Use  on your own liability only, and
 always indicate the source of parts that may have been used.
 
+## Notes
+
+If you are using Visual Studio, you might get lots of warnings because of the
+automatic type conversions between numeric values, and you'll have to define
+M\_PI yourself project-wide, as MSVC's cmath header does not contain it somehow.
+
 
 ## License
 

@@ -17,6 +17,10 @@ If you are using Visual Studio, you might get lots of warnings because of the
 automatic type conversions between numeric values, and you'll have to define
 M\_PI yourself project-wide, as MSVC's cmath header does not contain it somehow.
 
+## To-Dos
+* Custom Pi class included everywhere, so it can be used in the main program.
+* Command-line switch for NPR mode.
+* Change geo::vector's underlying type to double.
 
 ## License
 

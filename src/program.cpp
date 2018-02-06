@@ -68,9 +68,23 @@ void e_init() {
     current->diffuse = geo::vector(0.2, 0.6, 0.8, 1);
     current->specular = geo::vector();
     current->shine = 15;
-    current->draw_mode = obj::polyfill;
     current->textured = true;
     current->texture = hstripe;
+    current->create();
+    scene.objects.push_back(current);
+
+    constexpr const char modelpath[] = "model/bunny.obj";
+    current = std::shared_ptr<obj::object_base>(new obj::obj_model(modelpath));
+    current->position = geo::vector(9, 0, 4);
+    current->scale = geo::vector(4, 4, 4, 1);
+    current->rotation = geo::vector(0, 1, 0);
+    current->angle = 3.1415;
+    current->ambient = geo::vector(1, 1, 1);
+    current->diffuse = geo::vector(0.8, 0.8, 0.2);
+    current->specular = geo::vector(0.8, 0.8, 0.8);
+    current->shine = 15;
+    current->draw_mode = obj::polyfill;
+    current->textured = false;
     current->create();
     scene.objects.push_back(current);
 

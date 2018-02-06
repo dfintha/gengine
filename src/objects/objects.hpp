@@ -98,5 +98,13 @@ namespace obj {
 	public:
 	    void create() override;
 	};
+
+	class obj_model : public object_base {
+		std::string file;
+	public:
+		obj_model(const char *file);
+	    void create() override;
+	};
 }
+
 #endif

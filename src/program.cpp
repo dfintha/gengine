@@ -29,14 +29,21 @@ void e_init() {
     scene.light_position = geo::vector(0, 20, -10, 1);
     scene.background_color = geo::vector(0.1, 0.1, 0.1, 1);
 
-    auto checker = tex::checkerboard<16>(geo::vector(0.2, 0.2, 0.8, 1),
-                                         geo::vector(0.1, 0.1, 0.2, 1));
+    const eng::texture_ptr checker =
+        tex::checkerboard<16>(geo::vector(0.2, 0.2, 0.8, 1),
+                              geo::vector(0.1, 0.1, 0.2, 1));
 
-    auto hstripe = tex::hstripes<32>(geo::vector(0.2, 0.8, 0.2, 1),
-                                     geo::vector(0.1, 0.3, 0.1, 1));
+    const eng::texture_ptr hstripe =
+        tex::hstripes<32>(geo::vector(0.2, 0.8, 0.2, 1),
+                          geo::vector(0.1, 0.3, 0.1, 1));
 
-    auto vstripe = tex::vstripes<32>(geo::vector(0.8, 0.2, 0.2, 1),
-                                     geo::vector(0.3, 0.1, 0.1, 1));
+    const eng::texture_ptr vstripe =
+        tex::vstripes<32>(geo::vector(0.8, 0.2, 0.2, 1),
+                         geo::vector(0.3, 0.1, 0.1, 1));
+
+    const eng::texture_ptr silvershine =
+        tex::randomized<32>(geo::vector(0.60, 0.60, 0.60, 1),
+                            geo::vector(0.70, 0.70, 0.70, 1));
 
     auto current = std::shared_ptr<obj::object_base>(new obj::sphere);
     current->position = geo::vector(0, 1, -3);
@@ -80,11 +87,12 @@ void e_init() {
     current->rotation = geo::vector(0, 1, 0);
     current->angle = 3.1415;
     current->ambient = geo::vector(1, 1, 1);
-    current->diffuse = geo::vector(0.8, 0.8, 0.2);
+    current->diffuse = geo::vector(0.6, 0.6, 0.6);
     current->specular = geo::vector(0.8, 0.8, 0.8);
-    current->shine = 15;
+    current->shine = 32;
     current->draw_mode = obj::polyfill;
-    current->textured = false;
+    current->textured = true;
+    current->texture = silvershine;
     current->create();
     scene.objects.push_back(current);
 
@@ -201,6 +209,9 @@ void e_keyboard(unsigned char key, int, int) {
             scene.cam.position = geo::vector(0, 1, -3);
             scene.cam.lookat = geo::vector(0, 1, -2);
             break;
+
+        default:
+	        break;
     }
 }
 

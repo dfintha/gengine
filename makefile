@@ -17,57 +17,48 @@ CXXFLAGS=-std=c++14 -O2 -Wall -Wextra -Werror -pedantic -ffast-math -I./src
 CXXFLAGS+=`pkg-config --cflags gl glew freeglut`
 LDFLAGS=`pkg-config --libs gl glew freeglut`
 
-BLD=`tput bold`
-RED=`tput setaf 1`
-GRN=`tput setaf 2`
-YLW=`tput setaf 3`
-BLU=`tput setaf 5`
-TEL=`tput setaf 6`
-WHT=`tput setaf 6`
-NRM=`tput sgr0`
-
 .PHONY: all, clean
 
 all: $(BINARY)
 
-test: $(BINARY)
-	@printf "%s[ Tests ]%s $(BINARY)\n" "$(BLD)$(WHT)" $(NRM)
-	@$(BINARY)
-
 loc:
-	@printf "%s[ Lines ]%s " "$(BLD)$(YLW)" $(NRM)
+	@printf "[N] "
 	@cat src/*pp src/geometry/* | wc -l
+
+run: $(BINARY)
+	@$(BINARY)
 
 $(BINARY): $(OBJECTS)
 	@mkdir -p bin
-	@printf "%s[Linking]%s $@\n" "$(BLD)$(TEL)" $(NRM)
+	@printf "[L] $@\n"
 	@$(CXX) $(OBJECTS) -o $(BINARY) $(LDFLAGS)
-	@printf "%s[ Strip ]%s $@\n" "$(BLD)$(TEL)" $(NRM)
+	@printf "[S] $@\n"
 	@strip $(BINARY)
-	@printf "%s[Success] Build Succeeded!%s\n" "$(BLD)$(GRN)" $(NRM)
+	@printf "[+] Build Succeeded!%s\n"
 
 obj/%.o: src/%.cpp
 	@mkdir -p obj
-	@printf "%s[Compile]%s $<\n" "$(BLD)$(BLU)" $(NRM)
+	@printf "[C] $<\n"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 obj/engine/%.o: src/engine/%.cpp
 	@mkdir -p obj/engine
-	@printf "%s[Compile]%s $<\n" "$(BLD)$(BLU)" $(NRM)
+	@printf "[C] $<\n"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 obj/geometry/%.o: src/geometry/%.cpp
 	@mkdir -p obj/geometry
-	@printf "%s[Compile]%s $<\n" "$(BLD)$(BLU)" $(NRM)
+	@printf "[C] $<\n"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 obj/objects/%.o: src/objects/%.cpp
 	@mkdir -p obj/objects
-	@printf "%s[Compile]%s $<\n" "$(BLD)$(BLU)" $(NRM)
+	@printf "[C] $<\n"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	@printf "%s[ Clean ]%s bin\n" "$(BLD)$(RED)" $(NRM)
+	@printf "[R] bin\n"
 	@rm -rf bin
-	@printf "%s[ Clean ]%s obj\n" "$(BLD)$(RED)" $(NRM)
+	@printf "[R] obj\n"
 	@rm -rf obj
+

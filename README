@@ -1,0 +1,18 @@
+The gengine 3D Graphical Engine
+===============================
+
+This program serves as my first steps in the field of computer graphics. It is
+able to place various built-in objects in a scene, and load OBJ models in it.
+
+You can move around in the 3D space with the W and S keys, look around with
+the mouse, reset your position with the R key, or quit with the Q key.
+
+There are two usable fragment shaders. One for Phong shading, and one for 
+non-photorealistic (NPR) shading. 
+
+If you are using Microsoft Visual Studio, you'll have to define M_PI
+project-wide yourself, as the cmath header of Visual Studio does not have it
+defined.
+
+The software is under the MIT License.
+
